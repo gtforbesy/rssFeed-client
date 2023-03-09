@@ -1,0 +1,34 @@
+.header {
+    top: -100px;
+    transition: top 0.5s ease-in-out;
+    position: sticky;
+    top: 0;
+    width: calc(100% - 60px);
+    background: white;
+    padding: 10px 30px 0 30px;
+    height: 3rem;
+}
+
+.header-inner-div {
+    border-bottom: 1px black solid;
+    background: inherit;
+    display: flex;
+}
+
+.align-left {
+    float: left;
+    width: 33.3333%;
+    text-align: left;
+}
+
+.align-center {
+    float: center;
+    width: 33.3333%;
+    text-align: center;
+}
+
+.align-right {
+    float: right;
+    width: 33.3333%;
+    text-align: right;
+}
