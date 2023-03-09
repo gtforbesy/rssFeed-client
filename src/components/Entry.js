@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import "../customClasses/Entry.css";
 
 export default function Entry ({
@@ -20,7 +19,7 @@ export default function Entry ({
                </div>
             <div className="Entry-box-right">
              <a href={link} rel="noreferrer" target="_blank">
-                <img
+                <img alt=""
                     src={thumbnailUrl}
                     width="160px"/>
              </a>

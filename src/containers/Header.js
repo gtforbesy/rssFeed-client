@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import "../customClasses/Header.css";
 import {NYT_LOGO_PATH} from "../constants/Constants"
 

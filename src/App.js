@@ -10,7 +10,7 @@ function App() {
 const [rssItems, setRssItems] = useState([]);
 const [isLoaded, setIsLoaded] = useState(false);
 
-useEffect(() => {
+useEffect((isLoaded) => {
     if (!isLoaded)
         loadRss(setRssItems, setIsLoaded);
 });

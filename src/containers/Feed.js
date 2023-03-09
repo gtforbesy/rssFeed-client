@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import Entry from "../components/Entry";
 
 
@@ -14,8 +14,6 @@ export default function Feed(props) {
                 thumbnailUrl={post.comments}
            />
     }
-
-    const posts = props.items.map((item, index) => renderPost(item));
 
     return (
             <section>
