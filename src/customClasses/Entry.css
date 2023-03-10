@@ -35,7 +35,7 @@ a:active {
     text-decoration: none;
 }
 
-.Entry-box-left .Entry-author {
+.Entry-box-left .Entry-title {
     font-size: 18px;
     font-weight: 600;
     font-color: black;
@@ -48,6 +48,6 @@ a:active {
     color: #000000;
 }
 
-.Entry-box-left .Entry-date {
+.Entry-box-left .Entry-subtext {
     font-size: 10px;
 }

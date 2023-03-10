@@ -12,10 +12,10 @@ export default function Entry ({
     return (
         <div className="Entry-root">
             <div className="Entry-box-left">
-                <p className="Entry-date">{`${new Date(publishDate).toDateString()}`}</p>
-                <a href={link} rel="noreferrer" target="_blank"><p className="Entry-author">{title}</p></a>
+                <p className="Entry-subtext">{`${new Date(publishDate).toDateString()}`}</p>
+                <a href={link} rel="noreferrer" target="_blank"><p className="Entry-title">{title}</p></a>
                 <a href={link} rel="noreferrer" target="_blank"><p className="Entry-name">{description}</p></a>
-                <p className="Entry-date">{`By ${author}`}</p>
+                <p className="Entry-subtext">{`By ${author}`}</p>
                </div>
             <div className="Entry-box-right">
              <a href={link} rel="noreferrer" target="_blank">

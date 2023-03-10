@@ -4,49 +4,50 @@ import axios from "axios";
 import Feed from "./containers/Feed"
 import Header from "./containers/Header"
 import _ from "lodash"
-import React, {useState, useEffect} from "react"
+import React, {Component} from "react"
 
-function App() {
-const [rssItems, setRssItems] = useState([]);
-const [isLoaded, setIsLoaded] = useState(false);
+export class App extends Component {
+    constructor(props) {
+        super(props);
 
-useEffect((isLoaded) => {
-    if (!isLoaded)
-        loadRss(setRssItems, setIsLoaded);
-});
+        this.state = {
+            rssItems: [],
+            isLoaded: false
+        }
+    }
 
-const fallBack = <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                     Site under construction
-                 </header>
+    componentDidMount() {
+        if (!this.state.isLoaded)
+            this.loadRss();
+    }
 
-return (
-    <div>
-      <Header items={rssItems} isLoaded={isLoaded}/>
-      {renderFeed(rssItems, fallBack)}
-    </div>
-  );
-}
+    render() {
+    const rssItems = this.state.rssItems;
+    const fallBack = <header className="App-header">
+                        <img src={logo} className="App-logo" alt="logo" />
+                         Site under construction
+                     </header>
 
-async function loadRss(setRssItems, setIsLoaded) {
-    const serverUrl = "http://localhost:8080/rssFeed";
+        return (
+                <div key="root-div">
+                    {_.isEmpty(rssItems) ? <></> : <Header items={rssItems}/>}
+                    {_.isEmpty(rssItems) ? fallBack : <Feed items={rssItems}/>}
+                </div>
+        );
+    }
 
-    const response = await axios.get(serverUrl, {
-                                 headers: { 'Access-Control-Allow-Origin' : 'http://localhost:8080',
-                                            'Access-Control-Allow-Methods':'GET'
-                                            },
-                                           }).then((result) => {
-                                           setRssItems(result.data)
-                                           setIsLoaded(true)
-                                           return result;
-                                           }).catch((e) => console.log(e));
+   loadRss = async () => {
+        const serverUrl = "http://localhost:8080/rssFeed";
 
-    const data = await response.data
-    return data;
-}
-
-function renderFeed(rssItems, fallBack) {
-    return _.isEmpty(rssItems) ? fallBack : <Feed items={rssItems}/>
+        const response = await axios.get(serverUrl, {
+                                     headers: { 'Access-Control-Allow-Origin' : 'http://localhost:8080',
+                                                'Access-Control-Allow-Methods':'GET'
+                                                },
+                                               }).then((result) => {
+                                               this.setState({isLoaded: true, rssItems: result.data});
+                                               return result;
+                                               }).catch((e) => console.log(e));
+    }
 }
 
 export default App;
